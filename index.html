@@ -183,7 +183,7 @@ build a model of the world around them and how to interact with it.</p>
 
 <p><img src="/images/Boltzmann%20Machine.png" alt="RBM" /></p>
 
-<p>You pass the inputs up through the weights to the second layer then back down again, the goal being to re-generate the input.  Then compare how well the input and the re-created input and adjust the weights accordingly to improve the hidden layers representation of the input. Unlike backpropagation, this process is not very computationally complex. So you can quickly train this two layer network to do a good job of re-creating the input of a class of things.</p>
+<p>You pass the inputs up through the weights to the second layer then back down again, the goal being to re-generate the input.  Then compare how close the input and the re-created input are and adjust the weights accordingly to improve the hidden layers representation of the input. Unlike backpropagation, this process is not very computationally complex. So you can quickly train this two layer network to do a good job of re-creating the input of a class of things.</p>
 
 <p>Remember the example of hand written digits? The screenshot below shows what a RBM trained on digits looks like.  The &#8216;3&#8217; in the upper left is the never seen before test input and the 3&#8217;s below it are the RBM recreations for nine up/down cycles.  The boxes to the right are renderings of the connections in the RBM.  Each one represents a all the input weights to a single hidden node.  The green represents positive weights, the red represents negative weights.  You can see the weights have changed to extract features from the class on inputs. Some are specifically focused on a single digit class while others are an amalgamation of different digit features.</p>
 
