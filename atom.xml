@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[]]></title>
+  <title><![CDATA[tjake.blog]]></title>
   <link href="http://tjake.github.com/atom.xml" rel="self"/>
   <link href="http://tjake.github.com/"/>
-  <updated>2013-02-18T21:01:15-05:00</updated>
+  <updated>2013-02-27T22:59:02-05:00</updated>
   <id>http://tjake.github.com/</id>
   <author>
     <name><![CDATA[T Jake Luciani]]></name>
@@ -12,5 +12,116 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Resurgence in Neural Networks]]></title>
+    <link href="http://tjake.github.com/blog/2013/02/18/resurgence-in-artificial-intelligence/"/>
+    <updated>2013-02-18T22:21:00-05:00</updated>
+    <id>http://tjake.github.com/blog/2013/02/18/resurgence-in-artificial-intelligence</id>
+    <content type="html"><![CDATA[<p>If you&#8217;ve been paying attention, you&#8217;ll notice there has been <a href="http://www.wired.com/wiredscience/2012/06/google-x-neural-network/">a lot</a> of <a href="http://arstechnica.com/science/2013/02/us-government-to-back-massive-effort-to-understand-the-brain/">news</a> recently  about <a href="http://www.wired.com/wiredenterprise/2013/02/android-neural-network/">neural networks</a> and <a href="http://www.popsci.com/science/article/2013-02/how-simulate-human-brain-one-neuron-time-13-billion">the brain</a>.
+A few years ago the idea of virtual brains seemed so far from reality, especially for me, but in the past few years there has been a breakthrough that has turned neural networks from nifty little toys to actual useful things that keep
+getting better at doing things computers are traditionally very bad at. In this post I&#8217;ll cover some background on Neural networks and my experience with them. Then go over the recent discoveries I&#8217;ve learned about. At the end of the post I&#8217;ll share a sweet little github project I wrote that implements this new neural network approach.</p>
+
+<h3>Background</h3>
+
+
+<p>When I was in <a href="http://lehigh.edu">college</a> I studied <a href="http://en.wikipedia.org/wiki/Cognitive_science">Cognitive Science</a>, which is a  interdisciplinary study of the mind and brain.</p>
+
+<ul>
+<li>Philosophy</li>
+<li>Psychology</li>
+<li>Linguistics</li>
+<li>Neuroscience</li>
+<li>Artificial Intelligence</li>
+</ul>
+
+
+<p>I ended up focusing on A.I. and eventually majored in Computer Science because of it.
+The prospect of using computers to simulate how our brains work was just fascinating to me.<br/>
+And the possibilities of applying those techniques would be nothing short of revolutionary. Now, when I say Artificial Intelligence I&#8217;m really only referring to Neural Networks.  There are many other kinds of A.I. out there (e.g. <a href="http://en.wikipedia.org/wiki/Expert_system">Expert Systems</a>, <a href="http://en.wikipedia.org/wiki/Statistical_classification">Classifiers</a> and the like) but none of those store information like our brain does (between connections across billions of neurons).</p>
+
+<p>The problem with using computers to simulate a brain is they work nothing like a them. Computers have Central Processing Units.  Brains are fully distributed.  You teach computers what to-do by literally coding every action and response. Neural networks however, is a more generalized approach to computing. You teach computers how to learn&#8230; or at least that is the goal.</p>
+
+<p>So how can you make a computer more like a brain? Well, a classic <a href="http://en.wikipedia.org/wiki/Feedforward_neural_network">feed forward neural network</a> is depicted below. In a neural network you have very simple primitives, nodes and weighted connections.  Nodes connected to each other and the strength of that connection is how information is passed between them.  By combining many nodes and connections together you can relay a variety of information that is quite stable and can cope with failures and unknown inputs.   A common academic application for this kind of neural net is <a href="http://yann.lecun.com/exdb/mnist/">recognizing handwritten digits</a>.</p>
+
+<p><img src="http://tjake.github.com/images/Classic%20Neural%20Network.png" alt="Classic Neural Network" /></p>
+
+<p>The input layer is where your input signal goes.  For example, pixel intensities of a picture where each pixel maps to an input node. Each input node is connected to a node in the middle layer and each of those middle layer nodes are connected to the output layer. In the case of the handwriting example, each output node would map to a digit 0-9.  Data feeds through the network in only one direction (hence the name feed forward).  Now, the way our brain and a neural network stores information isn&#8217;t in the nodes themselves but actually in the connections between nodes.  By using a training algorithm you can teach the network to adjust its weights so it will naturally extract features from the underlying data in the middle layer.  As an example a &#8216;7&#8217; digit has a sharp corner on the upper right.</p>
+
+<p>The training algorithm taught to me in college years ago was called <a href="http://en.wikipedia.org/wiki/Backpropagation">Backpropagation</a>.  It is tedious and not very accurate but it was state of the art A.I.  It works like this:</p>
+
+<p>You initialize the weights between nodes with some Gaussian noise. You process a sample input through the network and look at the activation of the output nodes.  Based on the difference between the networks output and the desired output you adjust the contributing weights in the previous layers connections to dampen the wrong output and promote the right output. Then you move to the middle layer and adjust the connection weights from the input layer to the middle layer based on their contributions to the final output.  This is a non-linear process so it is slow and requires A LOT of training cases.  You can easily end up with weights stuck in <a href="http://en.wikipedia.org/wiki/Maxima_and_minima">local minima</a>.</p>
+
+<p>My first job out of college was building a neural network based model using backpropagation training to predict the yield of fiber optic lasers that met particular specs.  The trouble was a linear regression model did a better job predicting the yield then my fancy neural network.  This also happened to a lot of people who tried to use neural networks in the real world.  Neural networks were replaced by things like <a href="http://en.wikipedia.org/wiki/Principle_Component_Analysis">PCA</a> and <a href="http://en.wikipedia.org/wiki/Baysian_classifier">Bayesian classifiers</a>. These proved to be powerful tools that have created a whole <a href="http://en.wikipedia.org/wiki/Data_scientist">new industry</a> but they have little todo with how the brain works.</p>
+
+<p>Over time I began to forget about neural networks and ended up getting interested in <a href="http://cassandra.apache.org">distributed databases</a>.
+I was reminded, however, of how the brain works after having kids.  To see them grow and learn you really
+appreciate how little we come into this world with.  Everything from using their hands to grasp objects to
+recognizing your face is learned mainly unsupervised over months and months. A billion little neurons all working together to
+build a model of the world around them and how to interact with it.</p>
+
+<h3>A Breakthrough: Deep Learning with Restricted Boltzmann Machines</h3>
+
+
+<p>A few months ago I took a <a href="https://www.coursera.org/course/neuralnets">online course with coursera on neural networks</a> and learned that while I had given up and moved on from neural networks, the original pioneers of hadn&#8217;t.  And in 2002 <a href="http://www.cs.toronto.edu/~hinton/">Gregory Hinton</a> (et al.) discovered a technique called called <a href="http://www.cs.toronto.edu/~hinton/absps/nccd.pdf">Contrastive Divergence</a> that could quickly model inputs in a <a href="http://en.wikipedia.org/wiki/Restricted_Boltzmann_machine">Restricted Boltzmann Machine</a>. A Restricted Boltzmann Machine (RBM for short) is a two layer network of interconnected nodes (a <a href="http://en.wikipedia.org/wiki/Bipartite_graph">bipartite graph</a>). Unlike the feed forward network above these connections are two way.  This is important because rather than using backpropagation and explicit output cases you try to model the input by bouncing it through the network. See below:</p>
+
+<p><img src="http://tjake.github.com/images/Boltzmann%20Machine.png" alt="RBM" /></p>
+
+<p>You pass the inputs up through the weights to the second layer then back down again, the goal being to re-generate the input.  Then compare how well the input and the re-created input and adjust the weights accordingly to improve the hidden layers representation of the input. Unlike backpropagation, this process is not very computationally complex. So you can quickly train this two layer network to do a good job of re-creating the input of a class of things.</p>
+
+<p>Remember the example of hand written digits? The screenshot below shows what a RBM trained on digits looks like.  The &#8216;3&#8217; in the upper left is the never seen before test input and the 3&#8217;s below it are the RBM recreations for nine up/down cycles.  The boxes to the right are renderings of the connections in the RBM.  Each one represents a all the input weights to a single hidden node.  The green represents positive weights, the red represents negative weights.  You can see the weights have changed to extract features from the class on inputs. Some are specifically focused on a single digit class while others are an amalgamation of different digit features.</p>
+
+<p><img src="http://tjake.github.com/images/MinstRBM.png" alt="MNISTRBM" /></p>
+
+<p>Now you might be asking yourself what&#8217;s the value here if this network is only good at re-creating inputs?  Well, first it can recognize new inputs of the same class it&#8217;s never seen before and redraw them using the features it&#8217;s discovered from training (as above).  Even better it can not-recognize inputs that in no way represent the data it was trained on.  For example if I show it a face when it was trained on digits you can easily look at the error and tell it&#8217;s not a digit.</p>
+
+<p>More interestingly, Hinton discovered that you could stack these Restricted Boltzmann Machines one on top of the other and create what&#8217;s called a <a href="http://en.wikipedia.org/wiki/Deep_learning">Deep Belief Network</a>(DBN for short). By taking the output of one RBM and use it as the input of another RBM you can learn features of features and integrate different types of inputs together. This models a theory of how the brain works.</p>
+
+<blockquote><p> The neocortex of the brain [is] a hierarchy of filters where each layer captures some of the information in the operating environment,  and then passes the remainder, as well as modified base signal, to other layers further up the hierarchy. The result of this process is a self-organizing stack of transducers, well-tuned to their operating environment. <a href="http://en.wikipedia.org/wiki/Deep_learning">1</a></p></blockquote>
+
+<p>In Hinton&#8217;s online class, his example is of a deep network builds on the handwriting example and connects four RBMs together.
+The first RBM is as described above.  The second RBM takes the output from the first and uses it as it&#8217;s input.  The third RBM takes the output from the second and uses it as it&#8217;s input along with 10 extra inputs that represents the digit class.  Finally, the output of the third RBM is used as the input of the fourth. (The diagram below is from his coursera class).</p>
+
+<p><img src="http://tjake.github.com/images/MinstDBN.png" alt="MNISTDBN" /></p>
+
+<p>Training in its simplest form just builds on Contrastive divergence. You train the bottom RBM(&#8216;A&#8217; below) with the raw data first till it reaches equilibrium. Then start training &#8216;B&#8217; by taking passing a training case through &#8216;A&#8217; and using the output as a input for &#8216;B&#8217;. You do this over and over till &#8216;B&#8217; is trained then do the same with &#8216;C&#8217;.  The difference with C is you concatenate the Feature output of B along with the label input so the last RBM learns how to model these two.</p>
+
+<p><img src="http://tjake.github.com/images/DBN.png" alt="TrainingDBN" /></p>
+
+<p>Once this DBN is trained you can take a test case and pass it through the layers to see what the output of the label nodes are activated, So passing a image &#8216;3&#8217; will highlight the label &#8216;3&#8217;.  So we have built the functional equivalent of the classic neural network I initially described but it&#8217;s a whole lot simpler, faster and more accurate.</p>
+
+<p>Deep belief networks like this have subsequently be used to:</p>
+
+<ul>
+<li>Win the <a href="http://www.stat.osu.edu/~dmsl/GrandPrize2009_BPC_BellKor.pdf">Netflix prize</a></li>
+<li>Power <a href="http://psych.stanford.edu/~jlm/pdfs/Hinton12IEEE_SignalProcessingMagazine.pdf">Google Voice</a></li>
+<li>Improve <a href="http://blog.kaggle.com/2012/11/01/deep-learning-how-i-did-it-merck-1st-place-interview/">Predictive drug interactions</a></li>
+</ul>
+
+
+<p>There are many variations on RBMs that have been developed and it&#8217;s fun to dig into how slight variations to this fundamental technique can be used to make it good at learning things other than just static inputs.</p>
+
+<h3>Generative Machines</h3>
+
+
+<p>By far the most interesting thing I&#8217;ve learned about Deep Belief Networks is their generative properties.  Meaning you can look inside the &#8216;mind&#8217; of a DBN and see what it&#8217;s imagining.  Since a deep belief networks are two-way like restricted boltzmann machines you can make hidden inputs generate valid visual inputs.  Continuing with our handwritten digit example you can start with the label input say a &#8216;3&#8217; label and activate it then go reverse through the DBN and out the other end will pop out a picture of a &#8216;3&#8217; based on the features of the inner layers.  This is equivalent to our ability to visualize things using words, go ahead imagine a &#8216;3&#8217;,  now rotate it.</p>
+
+<p><img src="http://tjake.github.com/images/GenerativeDBN.png" alt="Generative DBN" /></p>
+
+<h3>Summary and Sample Project</h3>
+
+
+<p>Neural Networks have come a long way since I was in college.  And what I like is they now fit the model of the mind I can recognize.  The
+brain is truly an example of the whole is greater than the sum of it&#8217;s parts. And it seems like the stackable and generative properties of Restricted Boltzmann Machines have this as well.</p>
+
+<p>If you want to really learn about this stuff <em>please take the <a href="https://www.coursera.org/course/neuralnets">coursera course I mentioned</a></em>.  It&#8217;s taught by the foremost expert who created most everything I&#8217;ve covered.</p>
+
+<p>I&#8217;ve implemented a simple RBM and DBN to create the handwriting example you&#8217;ve seen above.  If you want to take a look and play with it the code is on my github.  It&#8217;s java and you&#8217;ll see it&#8217;s really not that complex.  A real implementation usually runs on the GPU to really speed up the training but it seems to run quickly enough and it&#8217;s got no external dependencies.</p>
+
+<p><a href="http://github.com/tjake/rbm-dbn-MNIST">Link to the github project</a></p>
+
+<p>Next time I&#8217;ll dig a little deeper into the different RBM types out there and some of the more advanced training techniques (I&#8217;m still learning them).</p>
+]]></content>
+  </entry>
   
 </feed>
