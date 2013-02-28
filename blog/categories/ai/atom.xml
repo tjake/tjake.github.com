@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ai | tjake.blog]]></title>
   <link href="http://tjake.github.com/blog/categories/ai/atom.xml" rel="self"/>
   <link href="http://tjake.github.com/"/>
-  <updated>2013-02-27T23:27:42-05:00</updated>
+  <updated>2013-02-27T23:42:48-05:00</updated>
   <id>http://tjake.github.com/</id>
   <author>
     <name><![CDATA[T Jake Luciani]]></name>
@@ -20,7 +20,7 @@
     <id>http://tjake.github.com/blog/2013/02/18/resurgence-in-artificial-intelligence</id>
     <content type="html"><![CDATA[<p>If you've been paying attention, you'll notice there has been <a href="http://www.wired.com/wiredscience/2012/06/google-x-neural-network/">a lot</a> of <a href="http://arstechnica.com/science/2013/02/us-government-to-back-massive-effort-to-understand-the-brain/">news</a> recently  about <a href="http://www.wired.com/wiredenterprise/2013/02/android-neural-network/">neural networks</a> and <a href="http://www.popsci.com/science/article/2013-02/how-simulate-human-brain-one-neuron-time-13-billion">the brain</a>.
 A few years ago the idea of virtual brains seemed so far from reality, especially for me, but in the past few years there has been a breakthrough that has turned neural networks from nifty little toys to actual useful things that keep
-getting better at doing things computers are traditionally very bad at. In this post I'll cover some background on Neural networks and my experience with them. Then go over the recent discoveries I've learned about. At the end of the post I'll share a sweet little github project I wrote that implements this new neural network approach.</p>
+getting better at doing tasks computers are traditionally very bad at. In this post I'll cover some background on Neural networks and my experience with them. Then go over the recent discoveries I've learned about. At the end of the post I'll share a sweet little github project I wrote that implements this new neural network approach.</p>
 
 <h3>Background</h3>
 
@@ -38,9 +38,9 @@ getting better at doing things computers are traditionally very bad at. In this 
 
 <p>I ended up focusing on A.I. and eventually majored in Computer Science because of it.
 The prospect of using computers to simulate how our brains work was just fascinating to me.<br/>
-And the possibilities of applying those techniques would be nothing short of revolutionary. Now, when I say Artificial Intelligence I'm really only referring to Neural Networks.  There are many other kinds of A.I. out there (e.g. <a href="http://en.wikipedia.org/wiki/Expert_system">Expert Systems</a>, <a href="http://en.wikipedia.org/wiki/Statistical_classification">Classifiers</a> and the like) but none of those store information like our brain does (between connections across billions of neurons).</p>
+And the possibility of applying those techniques would be nothing short of revolutionary. Now, when I say Artificial Intelligence I'm really only referring to Neural Networks.  There are many other kinds of A.I. out there (e.g. <a href="http://en.wikipedia.org/wiki/Expert_system">Expert Systems</a>, <a href="http://en.wikipedia.org/wiki/Statistical_classification">Classifiers</a> and the like) but none of those store information like our brain does (between connections across billions of neurons).</p>
 
-<p>The problem with using computers to simulate a brain is they work nothing like a them. Computers have Central Processing Units.  Brains are fully distributed.  You teach computers what to-do by literally coding every action and response. Neural networks however, is a more generalized approach to computing. You teach computers how to learn... or at least that is the goal.</p>
+<p>The problem with using computers to simulate a brain is they work nothing like them. Computers have Central Processing Units.  Brains are fully distributed.  You teach computers what to-do by literally coding every action and response. Neural networks however, is a more generalized approach to computing. You teach computers how to learn... or at least that is the goal.</p>
 
 <p>So how can you make a computer more like a brain? Well, a classic <a href="http://en.wikipedia.org/wiki/Feedforward_neural_network">feed forward neural network</a> is depicted below. In a neural network you have very simple primitives, nodes and weighted connections.  Nodes connected to each other and the strength of that connection is how information is passed between them.  By combining many nodes and connections together you can relay a variety of information that is quite stable and can cope with failures and unknown inputs.   A common academic application for this kind of neural net is <a href="http://yann.lecun.com/exdb/mnist/">recognizing handwritten digits</a>.</p>
 
