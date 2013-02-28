@@ -200,7 +200,7 @@ The first RBM is as described above.  The second RBM takes the output from the f
 
 <p><img src="/images/MinstDBN.png" alt="MNISTDBN" /></p>
 
-<p>Training in its simplest form just builds on Contrastive divergence. You train the bottom RBM(&#8216;A&#8217; below) with the raw data first till it reaches equilibrium. Then start training &#8216;B&#8217; by taking passing a training case through &#8216;A&#8217; and using the output as a input for &#8216;B&#8217;. You do this over and over till &#8216;B&#8217; is trained then do the same with &#8216;C&#8217;.  The difference with C is you concatenate the Feature output of B along with the label input so the last RBM learns how to model these two.</p>
+<p>Training in its simplest form just builds on Contrastive divergence. You train the bottom RBM(&#8216;A&#8217; below) with the raw data first till it reaches equilibrium. Then start training &#8216;B&#8217; by passing a training case through &#8216;A&#8217; and using the output as a input for &#8216;B&#8217;. You do this over and over till &#8216;B&#8217; is trained then do the same with &#8216;C&#8217;.  The difference with C is you concatenate the Feature output of B along with the label input so the last RBM learns how to model these two.</p>
 
 <p><img src="/images/DBN.png" alt="TrainingDBN" /></p>
 

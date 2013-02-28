@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ai | tjake.blog]]></title>
   <link href="http://tjake.github.com/blog/categories/ai/atom.xml" rel="self"/>
   <link href="http://tjake.github.com/"/>
-  <updated>2013-02-27T23:48:36-05:00</updated>
+  <updated>2013-02-27T23:51:54-05:00</updated>
   <id>http://tjake.github.com/</id>
   <author>
     <name><![CDATA[T Jake Luciani]]></name>
@@ -84,7 +84,7 @@ The first RBM is as described above.  The second RBM takes the output from the f
 
 <p><img src="/images/MinstDBN.png" alt="MNISTDBN" /></p>
 
-<p>Training in its simplest form just builds on Contrastive divergence. You train the bottom RBM('A' below) with the raw data first till it reaches equilibrium. Then start training 'B' by taking passing a training case through 'A' and using the output as a input for 'B'. You do this over and over till 'B' is trained then do the same with 'C'.  The difference with C is you concatenate the Feature output of B along with the label input so the last RBM learns how to model these two.</p>
+<p>Training in its simplest form just builds on Contrastive divergence. You train the bottom RBM('A' below) with the raw data first till it reaches equilibrium. Then start training 'B' by passing a training case through 'A' and using the output as a input for 'B'. You do this over and over till 'B' is trained then do the same with 'C'.  The difference with C is you concatenate the Feature output of B along with the label input so the last RBM learns how to model these two.</p>
 
 <p><img src="/images/DBN.png" alt="TrainingDBN" /></p>
 
